@@ -5,6 +5,10 @@ import AuthMiddleware from "../Middleware/AuthMiddleware.js";
 
 const router = express.Router();
 
+router.get("/", (req, res) => {
+  res.send("Users API");
+});
+
 /**
  * @swagger
  * tags:
