@@ -33,7 +33,9 @@ app.use(
 );
 
 app.use(ErrorHandlening) ;
-app.listen(PORT, () => {
-  console.log(`Server is running on localhost:${PORT}`);
-  console.log(`Swagger: http://localhost:${PORT}/api-docs`);
-});
+
+export default app ;
+// app.listen(PORT, () => {
+//   console.log(`Server is running on localhost:${PORT}`);
+//   console.log(`Swagger: http://localhost:${PORT}/api-docs`);
+// });
