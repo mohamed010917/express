@@ -1,15 +1,14 @@
 import multer from "multer";
-import path from "path";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+import cloudinary from "../config/cloudinary.js";
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    cb(null, Date.now() + ext);
-  },
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: async (req, file) => ({
+    folder: "notes-app",
+    allowed_formats: ["jpg", "jpeg", "png", "webp"],
+    public_id: Date.now().toString(),
+  }),
 });
 
 const fileFilter = (req, file, cb) => {

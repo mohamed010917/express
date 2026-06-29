@@ -129,8 +129,8 @@ class userController {
             const userId = req.userId ;
             const user = await User.findById(userId) ;
             if(!user) return res.status(400).json({message : "not found user"})
-            const image = "http://localhost:5000/uploads/" + req.file?.filename ;
-            const newUser = await User.updateOne({_id : userId} ,{image}) ;
+            
+            const newUser = await User.updateOne({_id : userId} ,{ image : req.file?.path || "" }) ;
             const updatedUser = await User.findById(userId).select("-password");
             
             return res.status(200).json({masseg : "image updated " , user :updatedUser}) ;
